@@ -2,9 +2,11 @@
   "name": "homelib",
   "version": "1.0.0",
   "description": "Your home library catalog, with access on-the-go.",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "tsc -p tsconfig.json",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/mikesamm/homelib/issues"
   },
-  "homepage": "https://github.com/mikesamm/homelib#readme"
+  "homepage": "https://github.com/mikesamm/homelib#readme",
+  "dependencies": {
+    "fastify": "^4.28.1",
+    "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "typescript": "^5.5.4"
+  }
 }
