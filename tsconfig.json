@@ -106,5 +106,13 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+  },
+  "watchOptions": {
+    "watchFile": "useFsEvents",                         /* Watching for native file system events */
+    "watchDirectory": "useFsEvents",                    /* Watching for native file system events */
+    "fallbackPolling": "dynamicPriority",               /* Poll for file changes more frequently when they're updated a lot */
+    "synchronousWatchDirectory": true,                  /* See all watch notifications instead of them combining into one */
+    "excludeDirectories": ["**node_modules"],           /* Exclude these from watch */
+    // "excludeFiles": []
   }
 }
