@@ -2,22 +2,15 @@
   "name": "homelib",
   "version": "0.0.1",
   "description": "Your home library catalog, with access on-the-go.",
+  "author": "Mike Sammartino",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "test": "test",
-    "build": "tsc -p tsconfig.json",
-    "start": "node server/index.js"
+    "build": "tsc -p tsconfig.json --watch",
+    "start": "nodemon server/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mikesamm/homelib.git"
-  },
-  "author": "Mike Sammartino",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mikesamm/homelib/issues"
-  },
-  "homepage": "https://github.com/mikesamm/homelib#readme",
+  "type": "module",
   "dependencies": {
     "fastify": "^4.28.1",
     "mongoose": "^8.5.2"
