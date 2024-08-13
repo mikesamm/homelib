@@ -1,12 +1,12 @@
 {
   "name": "homelib",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Your home library catalog, with access on-the-go.",
   "main": "index.js",
   "scripts": {
     "test": "test",
     "build": "tsc -p tsconfig.json",
-    "start": "node index.js"
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
