@@ -1,10 +1,27 @@
 import fastify from 'fastify';
 
-const server = fastify();
+const server = fastify({ logger: true });
 
-server.get('/ping', async (request, reply) => {
-  return 'pong\n';
+const options = {
+  schema: {
+    response : {
+      200: {
+        type: 'object',
+        properties: {
+          hello: { type: 'string' }
+        }
+      }
+    }
+  }
+}
+
+server.get('/ping', options, async (request, reply) => {
+  reply.send('ponggggg poooong\n');
 });
+
+server.get('/', options, (request, reply) => {
+  reply.send({ hello: 'world' })
+})
 
 server.listen({ port: 8080 }, (err, address) => {
   if (err) {

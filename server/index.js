@@ -1,12 +1,22 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+import fastify from 'fastify';
+const server = fastify({ logger: true });
+const options = {
+    schema: {
+        response: {
+            200: {
+                type: 'object',
+                properties: {
+                    hello: { type: 'string' }
+                }
+            }
+        }
+    }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const fastify_1 = __importDefault(require("fastify"));
-const server = (0, fastify_1.default)();
-server.get('/ping', async (request, reply) => {
-    return 'pong\n';
+server.get('/ping', options, async (request, reply) => {
+    reply.send('ponggggg poooong\n');
+});
+server.get('/', options, (request, reply) => {
+    reply.send({ hello: 'world' });
 });
 server.listen({ port: 8080 }, (err, address) => {
     if (err) {
