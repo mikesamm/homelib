@@ -13,8 +13,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@fastify/mongodb": "^8.0.0",
     "fastify": "^4.28.1",
-    "mongoose": "^8.5.2"
+    "fastify-plugin": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^22.2.0",
