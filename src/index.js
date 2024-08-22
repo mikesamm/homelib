@@ -16,12 +16,14 @@ server.get('/ping', options, async (request, reply) => {
     reply.send('ponggggg poooong\n');
 });
 server.get('/', options, (request, reply) => {
-    reply.send({ hello: 'world' });
+    return {
+        hello: 'world'
+    };
 });
-server.listen({ port: 8080 }, (err, address) => {
-    if (err) {
-        console.error(err);
-        process.exit(1);
-    }
-    console.log(`Server listening on ${address}`);
-});
+try {
+    server.listen({ port: 8080 });
+}
+catch (err) {
+    server.log.error(err);
+    process.exit(1);
+}
