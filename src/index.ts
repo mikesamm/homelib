@@ -1,46 +1,23 @@
-import fastify, { FastifyInstance, FastifyRequest, RequestGenericInterface, RouteGenericInterface } from 'fastify';
+import Fastify, { FastifyInstance, FastifyRequest, RequestGenericInterface, RouteGenericInterface } from 'fastify';
+import { greetingsController } from './greetings-controller.js';
 
-interface NameParam {
-  name: string;
-}
+const fastify: FastifyInstance = Fastify({ logger: true });
 
-const server: FastifyInstance = fastify({ logger: true });
+fastify.register(greetingsController, { prefix: '/greetings' });
 
-const options = {
-  schema: {
-    request: {
-      params: { name: 'string' }
-    },
-    response : {
-      200: {
-        type: 'object',
-        properties: {
-          hello: { type: 'string' }
-        }
-      }
-    }
-  }
-}
-
-server.get('/ping', options, async (req, reply) => {
+fastify.get('/ping', async (req, reply) => {
   reply.send('ponggggg poooong\n');
 });
 
-server.get('/ping/:name', options, (req: FastifyRequest<{ Params: NameParam }>, reply) => {
-  return {
-    hello: `${req.params.name}`
-  }
-})
-
-server.get('/', options, (req, reply) => {
+fastify.get('/', (req, reply) => {
   return {
     hello: 'world'
   }
 })
 
 try {
-  server.listen({ port: 8080 })
+  fastify.listen({ port: 8080 })
 } catch (err) {
-  server.log.error(err);
+  fastify.log.error(err);
   process.exit(1);
 }
