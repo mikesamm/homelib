@@ -3,17 +3,19 @@
   "version": "0.0.1",
   "description": "Your home library catalog, with access on-the-go.",
   "author": "Mike Sammartino",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "test": "test",
     "build": "tsc -p tsconfig.json --watch",
-    "start": "nodemon server/index.js"
+    "start": "node dist/index.js",
+    "dev": "nodemon dist/index.js"
   },
   "type": "module",
   "dependencies": {
+    "@fastify/mongodb": "^8.0.0",
     "fastify": "^4.28.1",
-    "mongoose": "^8.5.2"
+    "fastify-plugin": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^22.2.0",
