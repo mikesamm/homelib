@@ -1,10 +1,11 @@
 import Fastify, { FastifyInstance, FastifyRequest, RequestGenericInterface, RouteGenericInterface } from 'fastify';
 import fastifyMongodb from '@fastify/mongodb';
-import { greetingsController } from './greetings-controller.js';
+import { greetingsController } from './greetingsController.js';
+import { booksController } from './booksController.js';
 
 const fastify: FastifyInstance = Fastify({ logger: true });
 
-// Database access
+// Database connection
 fastify.register(fastifyMongodb, {
   forceClose: true,
   url: 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.15'
@@ -12,6 +13,7 @@ fastify.register(fastifyMongodb, {
 
 // Route controllers
 fastify.register(greetingsController, { prefix: '/greetings' });
+fastify.register(booksController, { prefix: '/api/v1/books' });
 
 fastify.get('/ping', async (req, reply) => {
   reply.send('ponggggg poooong\n');
