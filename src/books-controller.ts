@@ -1,14 +1,20 @@
 import axios from 'axios';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 
+interface FastifyRequestWithBody extends FastifyRequest {
+  title: string;
+  isbn: string;
+}
 export const booksController = (fastify: FastifyInstance, options, done) => {
-  fastify.get('/', /* { schema: replySchema }, */ async (req, reply) => {
+  fastify.post('/', /* { schema: replySchema }, */ async (req: FastifyRequestWithBody, reply) => {
+    const { title, isbn } = req;
 
     const result = await axios
       .get('https://openlibrary.org/search.json', {
         params: {
-          isbn: '9781476733951',
-          fields: 'title'
+          isbn,
+          title,
+          fields: "title"
         }
       })
       .then(({ data }) => {
