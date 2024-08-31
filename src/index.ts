@@ -1,7 +1,6 @@
 import Fastify, { FastifyInstance, FastifyRequest, RequestGenericInterface, RouteGenericInterface } from 'fastify';
 import fastifyMongodb from '@fastify/mongodb';
-import { greetingsController } from './greetingsController.js';
-import { booksController } from './booksController.js';
+import { booksController } from './books-controller.js';
 
 const fastify: FastifyInstance = Fastify({ logger: true });
 
@@ -12,7 +11,6 @@ fastify.register(fastifyMongodb, {
 })
 
 // Route controllers
-fastify.register(greetingsController, { prefix: '/greetings' });
 fastify.register(booksController, { prefix: '/api/v1/books' });
 
 fastify.get('/ping', async (req, reply) => {
