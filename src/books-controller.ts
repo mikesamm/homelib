@@ -6,11 +6,16 @@ interface FastifyRequestWithBody extends FastifyRequest {
   isbn: string;
 }
 export const booksController = (fastify, options, done) => {
+  const headers = {
+    "User-Agent": "homelib sammartino.mike@gmail.com"
+  };
+
   fastify.post('/title', /* { schema: replySchema }, */ async (req, reply) => {
     const { title } = req.body;
 
     const result = await axios
       .get('https://openlibrary.org/search.json', {
+        headers,
         params: {
           title,
           fields: "title,author_name,first_publish_year"
@@ -32,6 +37,7 @@ export const booksController = (fastify, options, done) => {
 
     const result = await axios
       .get('https://openlibrary.org/search.json', {
+        headers,
         params: {
           isbn,
           fields: "title,author_name,first_publish_year"
