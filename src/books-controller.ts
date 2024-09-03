@@ -5,16 +5,15 @@ interface FastifyRequestWithBody extends FastifyRequest {
   title: string;
   isbn: string;
 }
-export const booksController = (fastify: FastifyInstance, options, done) => {
-  fastify.post('/', /* { schema: replySchema }, */ async (req: FastifyRequestWithBody, reply) => {
-    const { title, isbn } = req;
+export const booksController = (fastify, options, done) => {
+  fastify.post('/title', /* { schema: replySchema }, */ async (req, reply) => {
+    const { title } = req.body;
 
     const result = await axios
       .get('https://openlibrary.org/search.json', {
         params: {
-          isbn,
           title,
-          fields: "title"
+          fields: "title,author_name,first_publish_year"
         }
       })
       .then(({ data }) => {
@@ -27,5 +26,26 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
       })
 
   })
+
+  fastify.post('/isbn', /* { schema: replySchema } */ async (req, reply) => {
+    const { isbn } = req.body;
+
+    const result = await axios
+      .get('https://openlibrary.org/search.json', {
+        params: {
+          isbn,
+          fields: "title,author_name,first_publish_year"
+        }
+      })
+      .then(({ data }) => {
+        console.log('data from openlib: ', data);
+        reply.send(data);
+      })
+      .catch((err) => {
+        console.error('Failed to get data from openlib: ', err);
+        reply.code(500);
+      })
+  })
+
   done();
 }
