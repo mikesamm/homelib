@@ -1,14 +1,18 @@
 import Fastify, { FastifyInstance, FastifyRequest, RequestGenericInterface, RouteGenericInterface } from 'fastify';
-import fastifyMongodb from '@fastify/mongodb';
-import { booksController } from './books-controller.js';
+import dotenv from 'dotenv';
+import { connect } from 'mongoose';
+import { booksController } from './controllers/books-controller.js';
+dotenv.config();
 
 const fastify: FastifyInstance = Fastify({ logger: true });
+const MONGO_URI: string = process.env.MONGO_URI!;
 
-// Database connection
-fastify.register(fastifyMongodb, {
-  forceClose: true,
-  url: 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.15'
-})
+try {
+  await connect(MONGO_URI);
+  console.log('Database connected!');
+} catch(e) {
+  console.error('Database connection failed: ', e);
+}
 
 // Route controllers
 fastify.register(booksController, { prefix: '/api/v1/books' });
