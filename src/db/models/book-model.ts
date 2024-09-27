@@ -2,10 +2,10 @@ import { model, Schema } from 'mongoose';
 
 const bookSchema = new Schema({
   title: String,
-  author_name: String,
+  author_name: [String],
   conver_edition_key: String,
   first_publish_year: Number,
-  ISBN: [String],
+  isbn: [String],
   number_of_pages_median: Number,
   genre: String,
   shelf_location: String,
