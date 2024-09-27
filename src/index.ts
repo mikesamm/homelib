@@ -5,7 +5,7 @@ import { booksController } from './controllers/books-controller.js';
 dotenv.config();
 
 const fastify: FastifyInstance = Fastify({ logger: true });
-const MONGO_URI: string = process.env.MONGO_URI!;
+export const MONGO_URI: string = process.env.MONGO_URI!;
 
 try {
   await connect(MONGO_URI);
