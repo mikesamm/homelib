@@ -23,7 +23,7 @@
   "devDependencies": {
     "@fastify/mongodb": "^9.0.1",
     "@sinclair/typebox": "^0.33.12",
-    "@types/node": "^22.2.0",
+    "@types/node": "^22.7.4",
     "mongoose": "^8.6.4",
     "typescript": "^5.5.4"
   }
