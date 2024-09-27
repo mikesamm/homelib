@@ -1,4 +1,6 @@
-[
+import { Book } from '../../types/book.js'
+
+export const sampleBooks: Book[] = [
   {
     "author_name": [
       "Douglas Adams"
