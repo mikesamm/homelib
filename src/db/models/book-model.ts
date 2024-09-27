@@ -14,4 +14,4 @@ const bookSchema = new Schema({
   borrower: String
 })
 
-export const Book = model('Book', bookSchema);
+export const BookModel = model('Book', bookSchema);
