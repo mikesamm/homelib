@@ -81,5 +81,17 @@ export const booksController = (fastify, options, done) => {
     }
   })
 
+  fastify.delete('/:id', async (req, reply) => {
+    const { id } = req.params;
+
+    try {
+      await BookModel.deleteOne({ _id: id })
+      reply.code(204)
+    } catch (e) {
+      console.error('Failed to delete book from db: ', e);
+      reply.code(500)
+    }
+  })
+
   done();
 }
