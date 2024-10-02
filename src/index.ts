@@ -17,16 +17,6 @@ try {
 // Route controllers
 fastify.register(booksController, { prefix: '/api/v1/books' });
 
-fastify.get('/ping', async (req, reply) => {
-  reply.send('ponggggg poooong\n');
-});
-
-fastify.get('/', (req, reply) => {
-  return {
-    hello: 'world'
-  }
-})
-
 try {
   fastify.listen({ port: 8080 })
 } catch (err) {
