@@ -81,6 +81,22 @@ export const booksController = (fastify, options, done) => {
     }
   })
 
+  fastify.patch('/shelf/:id', async (req, reply) => {
+    const { id } = req.params;
+    const { newLocation } = req.body;
+
+    try {
+      const response = await BookModel.updateOne(
+        { _id: id },
+        { shelf_location: newLocation }
+      )
+      reply.send(`Modified ${response.modifiedCount} shelf location`);
+    } catch (e) {
+      console.error('Failed to update shelf location: ', e);
+      reply.code(500)
+    }
+  })
+
   fastify.delete('/:id', async (req, reply) => {
     const { id } = req.params;
 
