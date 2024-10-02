@@ -23,7 +23,7 @@ export const booksController = (fastify, options, done) => {
         headers,
         params: {
           title,
-          // fields: "title,author_name,first_publish_year"
+          fields: "author_name,cover_edition_key,first_publish_year,isbn,number_of_pages_median,title"
         }
       })
       .then(({ data }) => {
@@ -45,7 +45,7 @@ export const booksController = (fastify, options, done) => {
         headers,
         params: {
           isbn,
-          // fields: "title,author_name,first_publish_year"
+          fields: "author_name,cover_edition_key,first_publish_year,isbn,number_of_pages_median,title"
         }
       })
       .then(({ data }) => {
