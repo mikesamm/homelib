@@ -18,7 +18,7 @@ try {
 fastify.register(booksController, { prefix: '/api/v1/books' });
 
 try {
-  fastify.listen({ port: 8080 })
+  fastify.listen({ port: 8001 })
 } catch (err) {
   fastify.log.error(err);
   process.exit(1);
