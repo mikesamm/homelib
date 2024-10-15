@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import CollectionList from './ItemList.vue';
+import ItemList from './ItemList.vue';
+
+defineProps<{ collectionType: string }>();
 
 </script>
 
 <template>
-  <h1>Collections</h1>
-  <CollectionList />
+  <h1>{{ collectionType }}s</h1>
+  <ItemList />
 </template>
 
 <style scoped>
