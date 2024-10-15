@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CollectionList from './CollectionList.vue';
+import CollectionList from './ItemList.vue';
 
 </script>
 
