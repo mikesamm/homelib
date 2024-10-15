@@ -1,10 +1,10 @@
 <script setup lang="ts">
+defineProps<{ itemType: string }>()
 
 </script>
 
 <template>
-  <button id="add-collection">Add Collection</button>
-  <h3>This is where the list goes</h3>
+  <h3>This is where the {{ itemType }} list goes</h3>
 </template>
 
 <style scoped>
