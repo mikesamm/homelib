@@ -9,6 +9,6 @@ import LibraryHome from './components/LibraryHome.vue';
   <LibraryHome />
 </template>
 
-<style scoped>
+<style>
 
 </style>
