@@ -7,7 +7,7 @@
   <header>
     <div id="logo">
       <!-- homelib logo anchor, link to home -->
-      logo
+      homelib
     </div>
     <nav>
       <a href="#">Collections</a>
