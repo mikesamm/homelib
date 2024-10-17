@@ -10,7 +10,6 @@ const username = ref('TESTUSER')
   <h1 id="library-name">
     {{ username }}'s Library
   </h1>
-  <button id="add-collection">Add Collection</button>
   <CollectionList />
   <ItemList />
 
