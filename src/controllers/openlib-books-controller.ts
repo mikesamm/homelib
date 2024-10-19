@@ -1,15 +1,16 @@
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import axios from 'axios';
 import { BookModel } from '../db/models/book-model.js';
-import { Book } from '../types/book.js';
+// import { Book } from '../types/book.js';
 
-interface FastifyRequestWithBody extends FastifyRequest {
-  title: string;
-  isbn: string;
-}
+// interface FastifyRequestWithBody extends FastifyRequest {
+//   title: string;
+//   isbn: string;
+// }
+
 const OPEN_LIB_ID = process.env.OPEN_LIB_ID;
 
-export const booksController = (fastify, options, done) => {
+export const booksController = (fastify: FastifyInstance, options, done) => {
   const headers = {
     "User-Agent": OPEN_LIB_ID
   };
