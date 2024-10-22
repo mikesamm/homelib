@@ -10,8 +10,8 @@
     "seed": "node dist/db/seed-data/seed.js",
     "build": "tsc -p tsconfig.json --watch",
     "build:prod": "tsc -p tsconfig.json",
-    "start": "node dist/index.js",
-    "dev": "nodemon dist/index.js",
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
     "preview": "vite preview"
   },
   "type": "module",
