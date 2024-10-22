@@ -1,7 +1,7 @@
 import Fastify, { FastifyInstance, FastifyRequest, RequestGenericInterface, RouteGenericInterface } from 'fastify';
 import dotenv from 'dotenv';
 import { connect } from 'mongoose';
-import { booksController } from './controllers/books-controller.js';
+import { booksController } from './controllers/gb-books-controller.js';
 dotenv.config();
 
 const fastify: FastifyInstance = Fastify({ logger: true });
