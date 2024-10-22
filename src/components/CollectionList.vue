@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-let formHidden = ref(true);
+let isFormHidden = ref(true);
 
 let id = 0;
 const collections = ref([
@@ -14,15 +14,15 @@ const newCollectionName = ref('');
 const addNewCollection = () => {
   collections.value.push({ id: id++, collectionName: newCollectionName.value });
   newCollectionName.value = '';
-  formHidden.value = true;
+  isFormHidden.value = true;
 }
 
 </script>
 
 <template>
   <h3>Collections</h3>
-  <button id="add-collection" @click="formHidden = !formHidden">Add Collection</button>
-  <form v-if="!formHidden" @submit.prevent="addNewCollection">
+  <button id="add-collection" @click="isFormHidden = !isFormHidden">Add Collection</button>
+  <form v-if="!isFormHidden" @submit.prevent="addNewCollection">
     <input
       v-model.trim="newCollectionName"
       placeholder="Name of new collection"
