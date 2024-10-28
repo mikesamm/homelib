@@ -1,7 +1,7 @@
 // create a function that saves many documents to the database
 import { connect, disconnect } from 'mongoose';
 import { BookModel } from '../models/book-model.js';
-import { sampleBooks } from './sample-books.js';
+import { sampleBooks } from './gb-sample-books.js';
 import { MONGO_URI } from '../../index.js';
 
 // connect  to db
