@@ -3,7 +3,7 @@ import { Book } from '../../types/book.js'
 export const sampleBooks: Book[] = [
   {
     "title": "Eon",
-    "subtitle": null,
+    "subtitle": "",
     "authors": [
         "Greg Bear"
     ],
@@ -108,7 +108,7 @@ export const sampleBooks: Book[] = [
   },
   {
     "title": "'Salem's Lot",
-    "subtitle": null,
+    "subtitle": "",
     "authors": [
         "Stephen King"
     ],

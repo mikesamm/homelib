@@ -2,16 +2,22 @@ import { model, Schema } from 'mongoose';
 
 const bookSchema = new Schema({
   title: String,
-  author_name: [String],
-  conver_edition_key: String,
-  first_publish_year: Number,
-  isbn: [String],
-  number_of_pages_median: Number,
+  subtitle: String,
+  authors: [String],
+  publisher: String,
+  publishedDate: String,
+  description: String,
+  categories: [String],
+  industryIdentifiers: [{ type: { type: String }, identifier: String }],
+  imageLinks: { smallThumbnail: String, thumbnail: String },
+  previewLink: String,
   genre: String,
   shelf_location: String,
   borrowed: Boolean,
   borrow_date: Date,
-  borrower: String
+  borrower: String,
+  dateAdded: String,
+  embossed: Boolean
 })
 
 export const BookModel = model('Book', bookSchema);

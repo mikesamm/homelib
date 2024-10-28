@@ -1,6 +1,6 @@
 export interface Book {
   title: string;
-  subtitle: string | null;
+  subtitle: string;
   authors: string[];
   publisher: string;
   publishedDate: string;
