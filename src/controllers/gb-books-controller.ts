@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import axios from 'axios';
-// import { BookModel } from '../db/models/book-model.js';
+import { BookModel } from '../db/models/book-model.js';
 // import { Book } from '../types/book.js';
 
 // need google auth env var
@@ -20,11 +20,6 @@ const gbSearchReplySchema = {
 export const booksController = (fastify: FastifyInstance, options, done) => {
   //    headers if needed
 
-  fastify.get('/', async (req, reply) => {
-    console.log('test hello');
-    return 'hello';
-  })
-
   // Search for books on Google Books (can be by title, ISBN, or keyword)
   fastify.post('/search', { schema: gbSearchReplySchema }, async (req, reply) => {
     const { q } = req.body;
@@ -41,19 +36,67 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
       return results;
     } catch (err) {
       console.error('Failed to search Google Books database', err);
+      reply.code(500);
     }
 
   })
 
-  //    GET for google book search
-
   //    collection is based on what collection the user is currently using, needs to be included in URI
   //    POST book to user's collection
+  fastify.post('/addBook', async (req, reply) => {
+    const { newBook } = req.body;
+
+    try {
+      BookModel.create(newBook);
+      reply.code(201);
+    } catch (err) {
+      console.error('Failed to add book to library: ', err);
+      reply.code(500);
+    }
+
+  })
+
   //    GET all books from user's collection
+  fastify.get('/', async (req, reply) => {
+
+    try {
+      const allBooks = await BookModel.find({})
+      reply.send(allBooks);
+    } catch (err) {
+      console.error('Failed to retrieve books from db: ', err);
+      reply.code(500);
+    }
+  })
+
   //    PATCH shelf, genre, borrow data
+  fastify.patch('/shelf/:id', async (req, reply) => {
+    const { id } = req.params;
+    const { newLocation } = req.body;
+
+    try {
+      const response = await BookModel.updateOne(
+        { _id: id },
+        { shelf_location: newLocation }
+      )
+      reply.send(`Modified ${response.modifiedCount} shelf location`);
+    } catch (err) {
+      console.error('Failed to update shelf location: ', err);
+      reply.code(500)
+    }
+  })
+
   //    DELETE book from user's collection
+  fastify.delete('/:id', async (req, reply) => {
+    const { id } = req.params;
 
-
+    try {
+      await BookModel.deleteOne({ _id: id })
+      reply.code(204)
+    } catch (err) {
+      console.error('Failed to delete book from db: ', err);
+      reply.code(500)
+    }
+  })
 
   done();
 }
