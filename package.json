@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "test",
-    "seed": "node dist/db/seed-data/seed.js",
+    "seed": "tsx src/db/seed-data/seed.ts",
     "build": "tsc -p tsconfig.json --watch",
     "build:prod": "tsc -p tsconfig.json",
     "start": "tsx src/index.ts",
