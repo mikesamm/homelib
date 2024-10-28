@@ -1,4 +1,4 @@
-import Fastify, { FastifyInstance, FastifyRequest, RequestGenericInterface, RouteGenericInterface } from 'fastify';
+import Fastify, { FastifyInstance } from 'fastify';
 import dotenv from 'dotenv';
 import { connect } from 'mongoose';
 import { booksController } from './controllers/gb-books-controller.js';
