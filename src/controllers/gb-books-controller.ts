@@ -5,6 +5,17 @@ import axios from 'axios';
 
 // need google auth env var
 
+// schemas for response validation
+const gbSearchReplySchema = {
+  response: {
+    200: {
+      properties: {
+        items: { type: 'array' }
+      }
+    }
+  }
+}
+
 // books controller
 export const booksController = (fastify: FastifyInstance, options, done) => {
   //    headers if needed
@@ -15,7 +26,7 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
   })
 
   // Search for books on Google Books (can be by title, ISBN, or keyword)
-  fastify.post('/search', /* { schema: replySchema} */ async (req, reply) => {
+  fastify.post('/search', { schema: gbSearchReplySchema }, async (req, reply) => {
     const { q } = req.body;
 
     try {
@@ -33,7 +44,7 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
     }
 
   })
-  
+
   //    GET for google book search
 
   //    collection is based on what collection the user is currently using, needs to be included in URI
