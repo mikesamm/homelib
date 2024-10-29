@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import ItemList from './ItemList.vue';
 
 let isFormHidden = ref(true);
+let isCollectionOpen = ref(false);
 
 let id = 0;
 const collections = ref([
@@ -17,6 +19,20 @@ const addNewCollection = () => {
   isFormHidden.value = true;
 }
 
+let selectedCollection = ref('')
+const selectCollection = (e: Event) => {
+  isCollectionOpen.value = !isCollectionOpen.value;
+  const element = e.target as HTMLElement;
+  selectedCollection.value = element.innerText;
+}
+
+/**
+ * on collection click,
+ * take value from what is clicked (collection name)
+ * pass it as prop to ItemList
+ * ItemList will then list items accordingly
+ */
+
 </script>
 
 <template>
@@ -31,10 +47,14 @@ const addNewCollection = () => {
     <button>Create Collection</button>
   </form>
   <ul>
-    <li v-for="collection in collections" :key="collection.id">
+    <li
+      v-for="collection in collections" :key="collection.id"
+      @click="selectCollection"
+    >
       {{ collection.collectionName }}
     </li>
   </ul>
+  <ItemList :collectionName=selectedCollection v-if="isCollectionOpen"/>
 </template>
 
 <style scoped>

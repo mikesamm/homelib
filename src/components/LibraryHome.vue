@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CollectionList from './CollectionList.vue';
-import ItemList from './ItemList.vue';
 
 const username = ref('TESTUSER')
 </script>
@@ -11,8 +10,6 @@ const username = ref('TESTUSER')
     {{ username }}'s Library
   </h1>
   <CollectionList />
-  <ItemList />
-
 </template>
 
 <style scoped>
