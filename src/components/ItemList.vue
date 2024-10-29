@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 
 // TODO: prop to take in collection type, items in an item list will only be of one type (books, music...)
+defineProps<{ collectionName: string }>();
 
 let id = 0;
 const items = ref([
@@ -198,7 +199,7 @@ const items = ref([
 </script>
 
 <template>
-  <h3>Items</h3>
+  <h3>{{ collectionName }}</h3>
   <ul>
     <li v-for="item in items" :key="item.id">
       {{ item.item.title }}, {{ item.item.author_name[0] }}
