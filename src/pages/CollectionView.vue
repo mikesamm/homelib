@@ -1,11 +1,6 @@
 <script setup lang="ts">
-
-/**
- * LEGACY COMPONENT. This component is now a view: CollectionView
- */
-
 import { ref } from 'vue';
-import ItemList from './ItemList.vue';
+import ItemList from '../components/ItemList.vue';
 
 let isFormHidden = ref(true);
 let isCollectionOpen = ref(false);
