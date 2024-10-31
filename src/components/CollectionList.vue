@@ -1,4 +1,9 @@
 <script setup lang="ts">
+
+/**
+ * LEGACY COMPONENT. This component is now a view: CollectionView
+ */
+
 import { ref } from 'vue';
 import ItemList from './ItemList.vue';
 
