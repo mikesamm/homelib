@@ -13,6 +13,7 @@
       <RouterLink to="/">Home</RouterLink >
       <RouterLink to="/about">About</RouterLink >
       <RouterLink to="/login">Login</RouterLink >
+      <RouterLink to="/library">Library</RouterLink >
     </nav>
     <!-- mobile: hamburger menu for menu -->
   </header>
