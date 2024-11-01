@@ -2,18 +2,33 @@ import { User } from '../../types/user';
 
 export const sampleUsers: User[] = [
   {
-    username: 'bob'
+    name: 'Bob Belcher',
+    username: 'burgers1',
+    email: 'bob.belcher@yahoo.com',
+    avatar: 'pictureexample.com'
   },
   {
-    username: 'linda'
+    name: 'Linda Belcher',
+    username: 'vocalista',
+    email: 'lindaB@yahoo.com',
+    avatar: 'pictureexample.com'
   },
   {
-    username: 'tina'
+    name: 'Tina Belcher',
+    username: 'horsesrule',
+    email: 'horsesrule@gmail.com',
+    avatar: 'pictureexample.com'
   },
   {
-    username: 'gene'
+    name: 'Gene Belcher',
+    username: 'musicman',
+    email: 'ilovemymom@gmail.com',
+    avatar: 'pictureexample.com'
   },
   {
-    username: 'louise'
+    name: 'Louise Belcher',
+    username: 'supreme-mastermind',
+    email: 'smartestbelcher@gmail.com',
+    avatar: 'pictureexample.com'
   }
 ]
