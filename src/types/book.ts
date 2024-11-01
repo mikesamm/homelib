@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export interface Book {
   title: string;
   subtitle: string;
@@ -10,10 +12,11 @@ export interface Book {
   imageLinks: {};
   previewLink: string;
   dateAdded: string;
+  ownedBy: User;
   genre: string;
   shelf_location: string;
   borrowed: boolean;
   borrow_date: any;
   borrower: string | null;
   embossed: boolean;
-}[];
+};
