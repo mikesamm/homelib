@@ -12,9 +12,9 @@ const bookSchema = new Schema({
   imageLinks: { smallThumbnail: String, thumbnail: String },
   previewLink: String,
   genre: String,
-  shelf_location: String,
+  shelfLocation: String,
   borrowed: Boolean,
-  borrow_date: Date,
+  borrowDate: Date,
   borrower: String,
   dateAdded: String,
   embossed: Boolean

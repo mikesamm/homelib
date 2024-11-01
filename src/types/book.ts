@@ -14,9 +14,9 @@ export interface Book {
   dateAdded: string;
   ownedBy: User;
   genre: string;
-  shelf_location: string;
+  shelfLocation: string;
   borrowed: boolean;
-  borrow_date: any;
+  borrowDate: any;
   borrower: string | null;
   embossed: boolean;
 };
