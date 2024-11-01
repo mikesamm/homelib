@@ -1,4 +1,5 @@
-import { Book } from '../../types/book.js'
+import { Book } from '../../types/book';
+import { sampleUsers } from './sample-users';
 
 export const sampleBooks: Book[] = [
   {
@@ -29,6 +30,7 @@ export const sampleBooks: Book[] = [
     },
     "previewLink": "http://books.google.com/books?id=7yHURwnbFvAC&printsec=frontcover&dq=Eon&hl=&cd=1&source=gbs_api",
     dateAdded: "Monday, October 28, 2024",
+    ownedBy: sampleUsers[0],
     genre: "Sci-Fi",
     shelf_location: "Living room",
     borrowed: false,
@@ -64,6 +66,7 @@ export const sampleBooks: Book[] = [
     },
     "previewLink": "http://books.google.com/books?id=fCATEAAAQBAJ&pg=PP1&dq=slewfoot&hl=&cd=1&source=gbs_api",
     dateAdded: "Monday, October 28, 2024",
+    ownedBy: sampleUsers[1],
     genre: "Historical Fiction",
     shelf_location: "Bedroom",
     borrowed: false,
@@ -99,6 +102,7 @@ export const sampleBooks: Book[] = [
     },
     "previewLink": "http://books.google.com/books?id=GKx_iZnXickC&printsec=frontcover&dq=skinny+legs+and+all&hl=&cd=1&source=gbs_api",
     dateAdded: "Monday, October 28, 2024",
+    ownedBy: sampleUsers[2],
     genre: "Fiction",
     shelf_location: "Living room",
     borrowed: false,
@@ -134,6 +138,7 @@ export const sampleBooks: Book[] = [
     },
     "previewLink": "http://books.google.com/books?id=i-KRRR_5lbQC&printsec=frontcover&dq=salem%27s+lot&hl=&cd=1&source=gbs_api",
     dateAdded: "Monday, October 28, 2024",
+    ownedBy: sampleUsers[3],
     genre: "Horror",
     shelf_location: "Living room",
     borrowed: false,
@@ -169,6 +174,7 @@ export const sampleBooks: Book[] = [
     },
     "previewLink": "http://books.google.com/books?id=NhWUDwAAQBAJ&printsec=frontcover&dq=bit+tyrants&hl=&cd=1&source=gbs_api",
     dateAdded: "Monday, October 28, 2024",
+    ownedBy: sampleUsers[4],
     genre: "Tech Activism",
     shelf_location: "Living room",
     borrowed: false,
