@@ -16,6 +16,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@fastify/cors": "^8.5.0",
     "axios": "^1.7.5",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
