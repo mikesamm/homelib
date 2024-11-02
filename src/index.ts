@@ -2,6 +2,7 @@ import Fastify, { FastifyInstance } from 'fastify';
 import dotenv from 'dotenv';
 import { connect } from 'mongoose';
 import { booksController } from './controllers/gb-books-controller.js';
+import { collectionController } from './controllers/collections-controller.js';
 dotenv.config();
 
 const fastify: FastifyInstance = Fastify({ logger: true });
@@ -16,6 +17,7 @@ try {
 
 // Route controllers
 fastify.register(booksController, { prefix: '/api/v1/books' });
+fastify.register(collectionController, { prefix: '/api/v1/collections' });
 
 try {
   fastify.listen({ port: 8001 })
