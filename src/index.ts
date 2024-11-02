@@ -1,4 +1,5 @@
 import Fastify, { FastifyInstance } from 'fastify';
+import cors from '@fastify/cors';
 import dotenv from 'dotenv';
 import { connect } from 'mongoose';
 import { booksController } from './controllers/gb-books-controller.js';
@@ -14,6 +15,10 @@ try {
 } catch(e) {
   console.error('Database connection failed: ', e);
 }
+
+await fastify.register(cors, {
+  origin: '*'
+})
 
 // Route controllers
 fastify.register(booksController, { prefix: '/api/v1/books' });
