@@ -47,7 +47,7 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
     const { newBook } = req.body;
 
     try {
-      BookModel.create(newBook);
+      await BookModel.create(newBook);
       reply.code(201);
     } catch (err) {
       console.error('Failed to add book to library: ', err);
@@ -78,7 +78,7 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
         { _id: id },
         { shelf_location: newLocation }
       )
-      reply.send(`Modified ${response.modifiedCount} shelf location`);
+      return { message: `Modified ${response.modifiedCount} shelf location` }
     } catch (err) {
       console.error('Failed to update shelf location: ', err);
       reply.code(500)
