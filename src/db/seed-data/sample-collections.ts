@@ -12,12 +12,12 @@ export const sampleCollections: Collection[] = [
     name: "Cassettes",
     dateCreated: "Monday, October 28, 2024",
     numberOfItems: 4,
-    createdBy: sampleUsers[1]
+    createdBy: sampleUsers[0]
   },
   {
     name: "DVDs",
     dateCreated: "Monday, October 28, 2024",
     numberOfItems: 2,
-    createdBy: sampleUsers[2]
+    createdBy: sampleUsers[0]
   }
 ]
