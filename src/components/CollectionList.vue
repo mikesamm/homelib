@@ -1,21 +1,23 @@
 <script setup lang="ts">
-
-/**
- * LEGACY COMPONENT. This component is now a view: CollectionView
- */
-
 import { ref } from 'vue';
+import axios from 'axios';
 import ItemList from './ItemList.vue';
+import { CollectionModel } from '../db/models/collection-model';
 
 let isFormHidden = ref(true);
 let isCollectionOpen = ref(false);
+let collections = ref([])
 
 let id = 0;
-const collections = ref([
-  { id: id++, collectionName: 'Books' },
-  { id: id++, collectionName: 'Movies' },
-  { id: id++, collectionName: 'Music' }
-])
+
+// get all collections from db
+axios.get('http://127.0.0.1:8001/api/v1/collections')
+  .then(({ data }) => {
+    collections.value = data
+  })
+  .catch((err) => {
+    console.error('Failed to get collections from database: ', err)
+  })
 
 const newCollectionName = ref('');
 const addNewCollection = () => {
@@ -31,17 +33,15 @@ const selectCollection = (e: Event) => {
   selectedCollection.value = element.innerText;
 }
 
-/**
- * on collection click,
- * take value from what is clicked (collection name)
- * pass it as prop to ItemList
- * ItemList will then list items accordingly
- */
-
 </script>
 
 <template>
+  <!-- this component will now just fetch the different collections from the db and list them -->
+   <!-- when collection is clicked, it navigates to CollectionView, CollectionView dynamically renders
+    collection name and ItemList -->
+
   <h3>Collections</h3>
+
   <button id="add-collection" @click="isFormHidden = !isFormHidden">Add Collection</button>
   <form v-if="!isFormHidden" @submit.prevent="addNewCollection">
     <input
@@ -51,12 +51,13 @@ const selectCollection = (e: Event) => {
     >
     <button>Create Collection</button>
   </form>
+
   <ul>
     <li
       v-for="collection in collections" :key="collection.id"
       @click="selectCollection"
     >
-      {{ collection.collectionName }}
+      {{ collection.name }}
     </li>
   </ul>
   <ItemList :collectionName=selectedCollection v-if="isCollectionOpen"/>
