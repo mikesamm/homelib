@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
-import ItemList from './ItemList.vue';
 
 let isFormHidden = ref(true);
 let isCollectionOpen = ref(false);
@@ -47,9 +46,6 @@ const selectCollection = (e: Event) => {
 </script>
 
 <template>
-  <!-- this component will now just fetch the different collections from the db and list them -->
-   <!-- when collection is clicked, it navigates to CollectionView, CollectionView dynamically renders
-    collection name and ItemList -->
 
   <h3>Collections</h3>
 
@@ -68,11 +64,9 @@ const selectCollection = (e: Event) => {
       v-for="collection in collections" :key="collection.id"
       @click="selectCollection"
     >
-      {{ collection.name }}
+      <RouterLink :to="{ name: 'collection', params: { collectionName: collection.name } }">{{ collection.name }}</RouterLink >
     </li>
   </ul>
-
-  <ItemList :collectionName=selectedCollection v-if="isCollectionOpen"/>
 
 </template>
 
