@@ -2,28 +2,39 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import ItemList from './ItemList.vue';
-import { CollectionModel } from '../db/models/collection-model';
 
 let isFormHidden = ref(true);
 let isCollectionOpen = ref(false);
 let collections = ref([])
 
-let id = 0;
+const getAllUserCollections = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8001/api/v1/collections')
+    collections.value = response.data;
+  } catch (err) {
+    console.error('Failed to get collections from database: ', err);
+  }
+}
+getAllUserCollections();
 
-// get all collections from db
-axios.get('http://127.0.0.1:8001/api/v1/collections')
-  .then(({ data }) => {
-    collections.value = data
-  })
-  .catch((err) => {
-    console.error('Failed to get collections from database: ', err)
-  })
-
+// POST new collection to db
 const newCollectionName = ref('');
-const addNewCollection = () => {
-  collections.value.push({ id: id++, collectionName: newCollectionName.value });
-  newCollectionName.value = '';
-  isFormHidden.value = true;
+const addNewCollection = async () => {
+
+  try {
+    await axios.post('http://127.0.0.1:8001/api/v1/collections/newCollection', {
+        newCollection: {
+          name: newCollectionName.value,
+          createdBy: 'TESTUSER'
+        }
+    })
+    getAllUserCollections();
+    newCollectionName.value = '';
+    isFormHidden.value = true;
+
+  } catch (err) {
+    console.error('Failed to add new collection: ', err);
+  }
 }
 
 let selectedCollection = ref('')
@@ -60,7 +71,9 @@ const selectCollection = (e: Event) => {
       {{ collection.name }}
     </li>
   </ul>
+
   <ItemList :collectionName=selectedCollection v-if="isCollectionOpen"/>
+
 </template>
 
 <style scoped>
