@@ -10,20 +10,34 @@ let collections = ref([])
 
 let id = 0;
 
-// get all collections from db
-axios.get('http://127.0.0.1:8001/api/v1/collections')
-  .then(({ data }) => {
-    collections.value = data
-  })
-  .catch((err) => {
-    console.error('Failed to get collections from database: ', err)
-  })
+const getAllUserCollections = () => {
+  axios.get('http://127.0.0.1:8001/api/v1/collections')
+    .then(({ data }) => {
+      collections.value = data
+    })
+    .catch((err) => {
+      console.error('Failed to get collections from database: ', err)
+    })
+}
+getAllUserCollections();
 
+// POST new collection to db
 const newCollectionName = ref('');
 const addNewCollection = () => {
-  collections.value.push({ id: id++, collectionName: newCollectionName.value });
-  newCollectionName.value = '';
-  isFormHidden.value = true;
+  axios.post('http://127.0.0.1:8001/api/v1/collections/newCollection', {
+      newCollection: {
+        name: newCollectionName.value,
+        createdBy: 'TESTUSER'
+      }
+  })
+  .then(() => {
+    getAllUserCollections();
+    newCollectionName.value = '';
+    isFormHidden.value = true;
+  })
+  .catch((err) => {
+    console.error('Failed to create new collection: ', err);
+  })
 }
 
 let selectedCollection = ref('')
@@ -60,7 +74,9 @@ const selectCollection = (e: Event) => {
       {{ collection.name }}
     </li>
   </ul>
+
   <ItemList :collectionName=selectedCollection v-if="isCollectionOpen"/>
+
 </template>
 
 <style scoped>
