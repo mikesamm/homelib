@@ -2,42 +2,39 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import ItemList from './ItemList.vue';
-import { CollectionModel } from '../db/models/collection-model';
 
 let isFormHidden = ref(true);
 let isCollectionOpen = ref(false);
 let collections = ref([])
 
-let id = 0;
-
-const getAllUserCollections = () => {
-  axios.get('http://127.0.0.1:8001/api/v1/collections')
-    .then(({ data }) => {
-      collections.value = data
-    })
-    .catch((err) => {
-      console.error('Failed to get collections from database: ', err)
-    })
+const getAllUserCollections = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8001/api/v1/collections')
+    collections.value = response.data;
+  } catch (err) {
+    console.error('Failed to get collections from database: ', err);
+  }
 }
 getAllUserCollections();
 
 // POST new collection to db
 const newCollectionName = ref('');
-const addNewCollection = () => {
-  axios.post('http://127.0.0.1:8001/api/v1/collections/newCollection', {
-      newCollection: {
-        name: newCollectionName.value,
-        createdBy: 'TESTUSER'
-      }
-  })
-  .then(() => {
+const addNewCollection = async () => {
+
+  try {
+    await axios.post('http://127.0.0.1:8001/api/v1/collections/newCollection', {
+        newCollection: {
+          name: newCollectionName.value,
+          createdBy: 'TESTUSER'
+        }
+    })
     getAllUserCollections();
     newCollectionName.value = '';
     isFormHidden.value = true;
-  })
-  .catch((err) => {
-    console.error('Failed to create new collection: ', err);
-  })
+
+  } catch (err) {
+    console.error('Failed to add new collection: ', err);
+  }
 }
 
 let selectedCollection = ref('')
