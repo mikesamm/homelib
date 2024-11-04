@@ -10,10 +10,10 @@
       homelib
     </div>
     <nav>
-      <RouterLink to="/">Home</RouterLink >
-      <RouterLink to="/about">About</RouterLink >
-      <RouterLink to="/login">Login</RouterLink >
-      <RouterLink to="/library">Library</RouterLink >
+      <RouterLink :to="{ name: 'home' }">Home</RouterLink >
+      <RouterLink :to="{ name: 'about' }">About</RouterLink >
+      <RouterLink :to="{ name: 'login' }">Login</RouterLink >
+      <RouterLink :to="{ name: 'library' }">Library</RouterLink >
     </nav>
     <!-- mobile: hamburger menu for menu -->
   </header>
