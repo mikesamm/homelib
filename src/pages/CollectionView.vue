@@ -7,7 +7,7 @@ defineProps<{ collectionName: String }>()
 </script>
 
 <template>
-  <h1>Collection Name: {{ collectionName }}</h1>
+  <h1>{{ collectionName }}</h1>
 
   <BookSearch />
 
