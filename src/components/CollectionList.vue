@@ -34,6 +34,7 @@ const addNewCollection = async () => {
   } catch (err) {
     console.error('Failed to add new collection: ', err);
   }
+
 }
 
 let selectedCollection = ref('')
