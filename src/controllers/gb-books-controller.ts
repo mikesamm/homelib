@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import axios from 'axios';
 import { BookModel } from '../db/models/book-model.js';
-// import { Book } from '../types/book.js';
+import { Book } from '../types/book.js';
 
 // need google auth env var
 
@@ -46,8 +46,20 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
   fastify.post('/addBook', async (req, reply) => {
     const { newBook } = req.body;
 
+    const newBookWithUserFields: Book = {
+      ...newBook,
+      dateAdded: new Date(),
+      ownedBy: "TESTUSER",
+      genre: "",
+      shelfLocation: "",
+      borrowed: false,
+      borrowDate: "",
+      borrower: "",
+      embossed: false
+    }
+
     try {
-      await BookModel.create(newBook);
+      await BookModel.create(newBookWithUserFields);
       reply.code(201);
     } catch (err) {
       console.error('Failed to add book to library: ', err);

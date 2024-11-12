@@ -29,13 +29,13 @@ export const sampleBooks: Book[] = [
         "thumbnail": "http://books.google.com/books/content?id=7yHURwnbFvAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "previewLink": "http://books.google.com/books?id=7yHURwnbFvAC&printsec=frontcover&dq=Eon&hl=&cd=1&source=gbs_api",
-    dateAdded: "Monday, October 28, 2024",
+    dateAdded: new Date(),
     ownedBy: sampleUsers[0],
     genre: "Sci-Fi",
     shelfLocation: "Living room",
     borrowed: false,
-    borrowDate: null,
-    borrower: null,
+    borrowDate: "",
+    borrower: "",
     embossed: false
   },
   {
@@ -65,13 +65,13 @@ export const sampleBooks: Book[] = [
         "thumbnail": "http://books.google.com/books/content?id=fCATEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "previewLink": "http://books.google.com/books?id=fCATEAAAQBAJ&pg=PP1&dq=slewfoot&hl=&cd=1&source=gbs_api",
-    dateAdded: "Monday, October 28, 2024",
+    dateAdded: new Date(),
     ownedBy: sampleUsers[1],
     genre: "Historical Fiction",
     shelfLocation: "Bedroom",
     borrowed: false,
-    borrowDate: null,
-    borrower: null,
+    borrowDate: "",
+    borrower: "",
     embossed: false
   },
   {
@@ -101,13 +101,13 @@ export const sampleBooks: Book[] = [
         "thumbnail": "http://books.google.com/books/content?id=GKx_iZnXickC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "previewLink": "http://books.google.com/books?id=GKx_iZnXickC&printsec=frontcover&dq=skinny+legs+and+all&hl=&cd=1&source=gbs_api",
-    dateAdded: "Monday, October 28, 2024",
+    dateAdded: new Date(),
     ownedBy: sampleUsers[2],
     genre: "Fiction",
     shelfLocation: "Living room",
     borrowed: false,
-    borrowDate: null,
-    borrower: null,
+    borrowDate: "",
+    borrower: "",
     embossed: false
   },
   {
@@ -137,13 +137,13 @@ export const sampleBooks: Book[] = [
         "thumbnail": "http://books.google.com/books/content?id=i-KRRR_5lbQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "previewLink": "http://books.google.com/books?id=i-KRRR_5lbQC&printsec=frontcover&dq=salem%27s+lot&hl=&cd=1&source=gbs_api",
-    dateAdded: "Monday, October 28, 2024",
+    dateAdded: new Date(),
     ownedBy: sampleUsers[3],
     genre: "Horror",
     shelfLocation: "Living room",
     borrowed: false,
-    borrowDate: null,
-    borrower: null,
+    borrowDate: "",
+    borrower: "",
     embossed: false
   },
   {
@@ -173,13 +173,13 @@ export const sampleBooks: Book[] = [
         "thumbnail": "http://books.google.com/books/content?id=NhWUDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "previewLink": "http://books.google.com/books?id=NhWUDwAAQBAJ&printsec=frontcover&dq=bit+tyrants&hl=&cd=1&source=gbs_api",
-    dateAdded: "Monday, October 28, 2024",
+    dateAdded: new Date(),
     ownedBy: sampleUsers[4],
     genre: "Tech Activism",
     shelfLocation: "Living room",
     borrowed: false,
-    borrowDate: null,
-    borrower: null,
+    borrowDate: "",
+    borrower: "",
     embossed: false
   }
 ];

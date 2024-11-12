@@ -4,12 +4,35 @@ import HomeView from "./pages/HomeView.vue";
 import AboutView from "./pages/AboutView.vue";
 import LoginView from "./pages/LoginView.vue";
 import LibraryView from "./pages/LibraryView.vue";
+import CollectionView from "./pages/CollectionView.vue";
 
 const routes = [
-  { path: '/', component: HomeView },
-  { path: '/about', component: AboutView },
-  { path: '/login', component: LoginView },
-  { path: '/library', component: LibraryView }
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/library',
+    name: 'library',
+    component: LibraryView
+  },
+  {
+    path: '/library/:collectionName',
+    name: 'collection',
+    component: CollectionView,
+    props: true
+  }
 ];
 
 const router = createRouter({
