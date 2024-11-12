@@ -35,7 +35,7 @@ const addBookToCollection = async (book) => {
 </script>
 
 <template>
-  <h1>Search</h1>
+  <h1>Google Search</h1>
 
   <form @submit.prevent="searchGoogleBooksAPI">
     <input
