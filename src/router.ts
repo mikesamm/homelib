@@ -5,6 +5,7 @@ import AboutView from "./pages/AboutView.vue";
 import LoginView from "./pages/LoginView.vue";
 import LibraryView from "./pages/LibraryView.vue";
 import CollectionView from "./pages/CollectionView.vue";
+import CallbackView from "./pages/CallbackView.vue"
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     name: 'collection',
     component: CollectionView,
     props: true
+  },
+  {
+    path: '/auth0callback',
+    name: 'callback',
+    component: CallbackView
   }
 ];
 
