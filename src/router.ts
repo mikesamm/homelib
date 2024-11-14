@@ -35,7 +35,7 @@ const routes = [
     props: true
   },
   {
-    path: '/auth0callback',
+    path: '/callback',
     name: 'callback',
     component: CallbackView
   }

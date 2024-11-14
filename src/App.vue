@@ -5,9 +5,9 @@ import FooterNav from './components/FooterNav.vue';
 </script>
 
 <template>
-  <div id="page-container">
+  <div class="page-container">
     <NavBar id="navbar"/>
-    <main id="content-wrapper">
+    <main class="content-wrapper">
       <RouterView />
     </main>
     <FooterNav />
@@ -15,12 +15,12 @@ import FooterNav from './components/FooterNav.vue';
 </template>
 
 <style>
-#page-container {
+.page-container {
   position: relative;
   min-height: 100vh;
 }
 
-#content-wrapper {
+.content-wrapper {
   padding-bottom: 2.5rem;    /* Footer height */
 }
 </style>
