@@ -4,6 +4,7 @@ import axios from 'axios';
 
 let searchResultId = 0;
 const searchResults = ref([])
+let authorString;
 
 const googleBooksSearchQuery = ref('');
 const searchGoogleBooksAPI = async () => {
@@ -14,10 +15,17 @@ const searchGoogleBooksAPI = async () => {
     })
     console.log('searchResults: ', rawSearchResults.data);
     searchResults.value = rawSearchResults.data.items;
+    // authorString = stringifyAuthors(searchResults.value.volumeInfo.authors);
   } catch (err) {
     console.error('Failed to search Google Books API: ', err);
   }
 
+}
+
+const stringifyAuthors = (authorArr: String[]) => {
+  return authorArr.reduce((string, author) => {
+    return string += `, ${author}`
+  })
 }
 
 const addBookToCollection = async (book) => {
@@ -48,7 +56,7 @@ const addBookToCollection = async (book) => {
 
   <ul>
     <li v-for="result in searchResults" :key="searchResultId++">
-      <div class="book-info">{{ result.volumeInfo.title }}, {{ result.volumeInfo.authors }}</div>
+      <div class="book-info">{{ result.volumeInfo.title }} by {{ stringifyAuthors(result.volumeInfo.authors).trim() }}</div>
       <button @click="addBookToCollection(result)">Add to Collection</button>
     </li>
   </ul>

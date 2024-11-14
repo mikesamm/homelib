@@ -17,14 +17,14 @@ const { isAuthenticated } = useAuth0();
     <nav>
       <RouterLink :to="{ name: 'about' }">About</RouterLink >
       <RouterLink v-if="isAuthenticated" :to="{ name: 'library' }">Library</RouterLink >
+      <div v-if="!isAuthenticated">
+        <SignupButton />
+        <LoginButton />
+      </div>
+      <div v-if="isAuthenticated">
+        <LogoutButton />
+      </div>
     </nav>
-    <div v-if="!isAuthenticated">
-      <SignupButton />
-      <LoginButton />
-    </div>
-    <div v-if="isAuthenticated">
-      <LogoutButton />
-    </div>
     <!-- mobile: hamburger menu for menu -->
   </header>
   <!-- Collections to go to list of collections -->
