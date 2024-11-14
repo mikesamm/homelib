@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import LoginButton from './LoginButton.vue';
+import LogoutButton from './LogoutButton.vue';
+import SignupButton from './SignupButton.vue';
+import { useAuth0 } from '@auth0/auth0-vue';
+
+const { isAuthenticated } = useAuth0();
 
 </script>
 
@@ -6,8 +12,7 @@
   <!-- div for the background, contain the navbar -->
   <header>
     <div id="logo">
-      <!-- homelib logo anchor, link to home -->
-      homelib
+      <RouterLink :to="{ name: 'home' }">homelib</RouterLink >
     </div>
     <nav>
       <RouterLink :to="{ name: 'home' }">Home</RouterLink >
@@ -15,6 +20,13 @@
       <RouterLink :to="{ name: 'login' }">Login</RouterLink >
       <RouterLink :to="{ name: 'library' }">Library</RouterLink >
     </nav>
+    <div v-if="!isAuthenticated">
+      <SignupButton />
+      <LoginButton />
+    </div>
+    <div v-if="isAuthenticated">
+      <LogoutButton />
+    </div>
     <!-- mobile: hamburger menu for menu -->
   </header>
   <!-- Collections to go to list of collections -->
