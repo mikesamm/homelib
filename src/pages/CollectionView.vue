@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ItemList from '../components/ItemList.vue';
-import BookSearch from '../components/BookSearch.vue';
+import ItemList from '@/components/ItemList.vue';
+import BookSearch from '@/components/BookSearch.vue';
 
 defineProps<{ collectionName: String }>()
 

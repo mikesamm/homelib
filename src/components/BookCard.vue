@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Book } from '../types/book';
+import { Book } from '@/types/book';
 
 const { book } = defineProps<{ book: Book }>();
 
