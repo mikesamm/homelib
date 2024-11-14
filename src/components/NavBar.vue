@@ -15,10 +15,8 @@ const { isAuthenticated } = useAuth0();
       <RouterLink :to="{ name: 'home' }">homelib</RouterLink >
     </div>
     <nav>
-      <RouterLink :to="{ name: 'home' }">Home</RouterLink >
       <RouterLink :to="{ name: 'about' }">About</RouterLink >
-      <RouterLink :to="{ name: 'login' }">Login</RouterLink >
-      <RouterLink :to="{ name: 'library' }">Library</RouterLink >
+      <RouterLink v-if="isAuthenticated" :to="{ name: 'library' }">Library</RouterLink >
     </nav>
     <div v-if="!isAuthenticated">
       <SignupButton />
