@@ -1,4 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
+import { authGuard } from "@auth0/auth0-vue";
 
 import HomeView from "./pages/HomeView.vue";
 import AboutView from "./pages/AboutView.vue";
@@ -26,12 +27,14 @@ const routes = [
   {
     path: '/library',
     name: 'library',
-    component: LibraryView
+    component: LibraryView,
+    beforeEnter: authGuard
   },
   {
     path: '/library/:collectionName',
     name: 'collection',
     component: CollectionView,
+    beforeEnter: authGuard,
     props: true
   },
   {
