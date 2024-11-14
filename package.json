@@ -16,6 +16,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@auth0/auth0-vue": "^2.3.3",
     "@fastify/cors": "^8.5.0",
     "axios": "^1.7.5",
     "dotenv": "^16.4.5",
