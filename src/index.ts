@@ -10,23 +10,23 @@ const fastify: FastifyInstance = Fastify({ logger: true });
 export const MONGO_URI: string = process.env.MONGO_URI!;
 
 try {
-  await connect(MONGO_URI);
-  console.log('Database connected!');
-} catch(e) {
-  console.error('Database connection failed: ', e);
+	await connect(MONGO_URI);
+	console.log('Database connected!');
+} catch (e) {
+	console.error('Database connection failed: ', e);
 }
 
 await fastify.register(cors, {
-  origin: '*'
-})
+	origin: '*',
+});
 
 // Route controllers
 fastify.register(booksController, { prefix: '/api/v1/books' });
 fastify.register(collectionController, { prefix: '/api/v1/collections' });
 
 try {
-  fastify.listen({ port: 8001 })
+	fastify.listen({ port: 8001 });
 } catch (err) {
-  fastify.log.error(err);
-  process.exit(1);
+	fastify.log.error(err);
+	process.exit(1);
 }
