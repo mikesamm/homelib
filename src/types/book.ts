@@ -9,7 +9,7 @@ export interface Book {
   description: string;
   industryIdentifiers: { type: string, identifier: string }[]
   categories: string[];
-  imageLinks: {};
+  imageLinks: object;
   previewLink: string;
   dateAdded: Date;
   ownedBy: User;
