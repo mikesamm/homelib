@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-vue';
 
 let isFormHidden = ref(true);
 let isCollectionOpen = ref(false);
 let collections = ref([]);
+const { user } = useAuth0();
 
 const getAllUserCollections = async () => {
 	try {
 		const response = await axios.get(
-			'http://127.0.0.1:8001/api/v1/collections',
+			`http://127.0.0.1:8001/api/v1/collections/${user.value?.name}`,
 		);
 		collections.value = response.data;
 	} catch (err) {
@@ -25,7 +27,7 @@ const addNewCollection = async () => {
 		await axios.post('http://127.0.0.1:8001/api/v1/collections/newCollection', {
 			newCollection: {
 				name: newCollectionName.value,
-				createdBy: 'TESTUSER',
+				createdBy: user.value?.name,
 			},
 		});
 		getAllUserCollections();

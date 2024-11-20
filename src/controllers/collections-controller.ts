@@ -7,10 +7,17 @@ export const collectionController = (
 	options,
 	done,
 ) => {
-	// GET all collections
-	fastify.get('/', async (req, reply) => {
-		const allCollections = await CollectionModel.find({});
-		return allCollections;
+
+	fastify.get('/:user', async (req, reply) => {
+		const { user } = req.params;
+
+		const allUserCollections = await CollectionModel.find({
+			createdBy: {
+				username: user
+			}
+		});
+
+		return allUserCollections;
 	});
 	//  query 'collections' collection
 
