@@ -11,10 +11,12 @@ export interface Book {
 	categories: string[];
 	imageLinks: object;
 	previewLink: string;
+	addedBy: string;
 	dateAdded: Date;
 	ownedBy: User;
 	genre: string;
 	shelfLocation: string;
+	condition: string;
 	borrowed: boolean;
 	borrowDate: string | Date;
 	borrower: string | null;

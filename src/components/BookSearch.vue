@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-vue';
 
 let searchResultId = 0;
 const searchResults = ref([]);
-let authorString;
+const { user } = useAuth0();
 
 const googleBooksSearchQuery = ref('');
 const searchGoogleBooksAPI = async () => {
@@ -17,7 +18,6 @@ const searchGoogleBooksAPI = async () => {
 		);
 		console.log('searchResults: ', rawSearchResults.data);
 		searchResults.value = rawSearchResults.data.items;
-		// authorString = stringifyAuthors(searchResults.value.volumeInfo.authors);
 	} catch (err) {
 		console.error('Failed to search Google Books API: ', err);
 	}
@@ -33,6 +33,7 @@ const addBookToCollection = async (book) => {
 	try {
 		await axios.post('http://127.0.0.1:8001/api/v1/books/addBook', {
 			newBook: book.volumeInfo,
+			addedBy: user.value?.name
 		});
 		console.log('BOOK ADDED TO DB');
 	} catch (err) {

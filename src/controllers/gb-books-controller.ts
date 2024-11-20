@@ -51,14 +51,16 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
 	//    collection is based on what collection the user is currently using, needs to be included in URI
 	//    POST book to user's collection
 	fastify.post('/addBook', async (req, reply) => {
-		const { newBook } = req.body;
+		const { newBook, addedBy } = req.body;
 
 		const newBookWithUserFields: Book = {
 			...newBook,
+			addedBy,
 			dateAdded: new Date(),
 			ownedBy: 'TESTUSER',
 			genre: '',
 			shelfLocation: '',
+			condition: '',
 			borrowed: false,
 			borrowDate: '',
 			borrower: '',
@@ -75,9 +77,13 @@ export const booksController = (fastify: FastifyInstance, options, done) => {
 	});
 
 	//    GET all books from user's collection
-	fastify.get('/', async (req, reply) => {
+	fastify.get('/:user', async (req, reply) => {
+		const { user } = req.params;
+
 		try {
-			const allBooks = await BookModel.find({});
+			const allBooks = await BookModel.find({
+				addedBy: user
+			});
 			reply.send(allBooks);
 		} catch (err) {
 			console.error('Failed to retrieve books from db: ', err);

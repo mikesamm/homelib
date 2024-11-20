@@ -10,13 +10,15 @@ const bookSchema = new Schema({
 	categories: [String],
 	industryIdentifiers: [{ type: { type: String }, identifier: String }],
 	imageLinks: { smallThumbnail: String, thumbnail: String },
+	addedBy: String,
+	dateAdded: String,
 	previewLink: String,
 	genre: String,
 	shelfLocation: String,
+	condition: String,
 	borrowed: Boolean,
 	borrowDate: Date,
 	borrower: String,
-	dateAdded: String,
 	embossed: Boolean,
 });
 

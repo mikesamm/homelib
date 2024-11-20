@@ -2,14 +2,16 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import BookCard from './BookCard.vue';
+import { useAuth0 } from '@auth0/auth0-vue';
 
+const { user } = useAuth0();
 const props = defineProps<{ collectionName: String }>();
 
 let booksInCollection = ref([]);
 
 const getAllBooksInCollection = async () => {
 	try {
-		let response = await axios.get('http://127.0.0.1:8001/api/v1/books');
+		let response = await axios.get(`http://127.0.0.1:8001/api/v1/books/${user.value?.name}`);
 		booksInCollection.value = response.data;
 	} catch (err) {
 		console.error(
